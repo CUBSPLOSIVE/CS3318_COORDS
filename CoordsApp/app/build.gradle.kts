@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -36,6 +37,32 @@ android {
 }
 
 dependencies {
+
+
+    val room_version = "2.6.1"
+
+    val lifecycle_version = "2.8.7"
+
+    implementation(libs.androidx.room.runtime)
+
+// If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
+// See Add the KSP plugin to your project
+// ksp("androidx.room:room-compiler:$room_version")
+    ksp(libs.androidx.room.compiler)
+
+// If this project only uses Java source, use the Java annotationProcessor
+// No additional plugins are necessary
+    annotationProcessor(libs.androidx.room.compiler)
+
+// optional - Kotlin Extensions and Coroutines support for Room
+    implementation(libs.androidx.room.ktx)
+
+
+// ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+// LiveData
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
