@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 // If permission is granted, start receiving location updates
                 startLocationUpdates()
             } else {
-                // If permission is denied, show a Toast message
+                // If permission is denied, show a Toast message.
                 Toast.makeText(this, "Location permission not granted.", Toast.LENGTH_SHORT).show()
             }
         }
