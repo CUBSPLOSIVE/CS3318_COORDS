@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.room.Room
-import com.example.coordsapp.db.LocationDatabase
+//    import androidx.core.view.ViewCompat
+//    import androidx.core.view.WindowInsetsCompat
+//    import androidx.room.Room
+//    import com.example.coordsapp.db.LocationDatabase
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvCurrentCoords: TextView
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+    //val db = Room.databaseBuilder(applicationContext, LocationDatabase::class.java, "coords_database").build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,5 +87,9 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         // Start updating location when the activity is resumed
         handler.post(runnable)
+        val goalCoords = findViewById<TextView>(R.id.tvGoalCoords)
+        val currentPosition = findViewById<TextView>(R.id.tvCurrentCoords)
+        goalCoords.text = "-75.355130620324° N\n-125.591606645161° W"
+        currentPosition.text = "-84.294988648942° N\n-122.669134327106° W"
     }
 }
