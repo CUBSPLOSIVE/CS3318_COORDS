@@ -2,11 +2,13 @@ package com.example.coordsapp
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -48,6 +50,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        val btnSavedActivity = findViewById<Button>(R.id.btnSaved)
+
+        btnSavedActivity.setOnClickListener{
+            val intent = Intent(this,savedLocationsActivity::class.java)
+            startActivity(intent)
+        }
 
         // Initialize TextView
         tvCurrentCoords = findViewById<TextView>(R.id.tvCurrentCoords)
