@@ -1,15 +1,22 @@
 package com.example.coordsapp
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import com.example.coordsapp.db.LocationDatabase
+
 //    import androidx.core.view.ViewCompat
 //    import androidx.core.view.WindowInsetsCompat
 //    import androidx.room.Room
@@ -19,20 +26,33 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var locationManager: LocationManager
     private lateinit var db: LocationDatabase
-    private lateinit var handler: Handler
-    private lateinit var runnable: Runnable
     private lateinit var tvCurrentCoords: TextView
+    private lateinit var goalCoords: TextView
+    private lateinit var currentPosition: TextView
 
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
-    //val db = Room.databaseBuilder(applicationContext, LocationDatabase::class.java, "coords_database").build()
+    // Registering for location permission request result
+    private val locationPermissionRequest =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                // If permission is granted, start receiving location updates
+                startLocationUpdates()
+            } else {
+                // If permission is denied, show a Toast message
+                Toast.makeText(this, "Location permission not granted.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
+
+    @RequiresApi(Build.VERSION_CODES.M) // Requires API level 23 (Marshmallow)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         // Initialize TextView
-        tvCurrentCoords = findViewById(R.id.tvCurrentCoords)
+        tvCurrentCoords = findViewById<TextView>(R.id.tvCurrentCoords)
+        goalCoords = findViewById<TextView>(R.id.tvGoalCoords)
+        currentPosition = findViewById<TextView>(R.id.tvCurrentCoords)
 
         // Initialize the database inside onCreate to ensure it happens when the activity is ready
         db = Room.databaseBuilder(applicationContext, LocationDatabase::class.java, "coords_database")
@@ -41,55 +61,46 @@ class MainActivity : AppCompatActivity() {
         // Initialize the LocationManager
         locationManager = LocationManager(this)
 
-        // Initialize Handler and Runnable
-        handler = Handler()
-        runnable = object : Runnable {
-            override fun run() {
-                updateLocation() // Get the location and update the TextView
-                handler.postDelayed(this, 1000) // Run every 5 seconds
-            }
+        // Check and request location permissions
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            startLocationUpdates()
+        } else {
+            locationPermissionRequest.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
-
-
-        // Check and request permissions
-        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {isGranted: Boolean ->
-            if (isGranted) {
-                // Permission is granted, start location updates
-                handler.post(runnable)
-            } else{
-                // Permission is denied, handle accordingly
-                Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        // Request permission on app startup
-        requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
-    // Method to update location
-    private fun updateLocation() {
-        locationManager.getCurrentLocation { location -> location?.let{
-            val latitude = it.latitude
-            val longitude = it.longitude
+    // Starts receiving location updates (every second)
+    private fun startLocationUpdates() {
+        locationManager.startLocationUpdates { location ->
+            // Callback will be called every time location is updated
+            val latitude = location?.latitude
+            val longitude = location?.longitude
             val coordsText = "Latitude: $latitude\nLongitude: $longitude"
-            tvCurrentCoords.text = coordsText
-            }
+            Log.d("MainActivity", "Received location: ${tvCurrentCoords.text}")
+            tvCurrentCoords.text = coordsText // Update the UI with new coordinates
         }
     }
 
     override fun onPause(){
         super.onPause()
         // Stop updating location when the activity is paused
-        handler.removeCallbacks(runnable)
+        locationManager.stopLocationUpdates()
     }
 
     override fun onResume(){
         super.onResume()
         // Start updating location when the activity is resumed
-        handler.post(runnable)
-        val goalCoords = findViewById<TextView>(R.id.tvGoalCoords)
-        val currentPosition = findViewById<TextView>(R.id.tvCurrentCoords)
+        startLocationUpdates()
+
+
+    }
+
+    // Handle onDestroy to reset any data when the activity is destroyed
+    override fun onDestroy() {
+        super.onDestroy()
+        // Clear coordinates and stop location updates when the activity is destroyed
         goalCoords.text = "-75.355130620324° N\n-125.591606645161° W"
         currentPosition.text = "-84.294988648942° N\n-122.669134327106° W"
+        locationManager.stopLocationUpdates() // Ensure no location updates are running
     }
 }
