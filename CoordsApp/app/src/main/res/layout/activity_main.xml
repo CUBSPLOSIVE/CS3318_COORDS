@@ -72,7 +72,7 @@
         android:id="@+id/btnSaved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#5C5F5C"
+        android:backgroundTint="#52663B"
         android:text="Saved Locations"
         android:textColorLink="#5C5F5C"
         app:layout_constraintBottom_toBottomOf="parent"
