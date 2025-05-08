@@ -1,30 +1,40 @@
 package com.example.coordsapp
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.coordsapp.db.LocationDatabase
 
-//    import androidx.core.view.ViewCompat
-//    import androidx.core.view.WindowInsetsCompat
-//    import androidx.room.Room
-//    import com.example.coordsapp.db.LocationDatabase
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var sensorManager: SensorManager
+    private var accelerometerData = FloatArray(3) // Reads 3 for 3D space (X,Y,Z)
+    private var magnetometerData = FloatArray(3)
+
+    private lateinit var navArrow: ImageView
+    private var currentDegree = 0f //current rotation angle of the arrow
 
     private lateinit var locationManager: LocationManager
     private lateinit var db: LocationDatabase
@@ -44,12 +54,50 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    // Rotate the arrow according to the degree passed in
+    private fun rotateArrow(degree: Float) {
+        val rotateAnimation = RotateAnimation(
+            currentDegree,
+            degree,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_SELF, 0.5f
+        )
+        rotateAnimation.duration = 210
+        rotateAnimation.fillAfter = true
+        navArrow.startAnimation(rotateAnimation)
+        currentDegree = degree
+    }
+
+    // Moves Arrow based on changes in data read by the accelerometer and the magnetometer
+    private val sensorListener = object : SensorEventListener {
+        override fun onSensorChanged(event: SensorEvent?) {
+            when (event?.sensor?.type) {
+                Sensor.TYPE_ACCELEROMETER -> accelerometerData = event.values.clone()
+                Sensor.TYPE_MAGNETIC_FIELD -> magnetometerData = event.values.clone()
+            }
+
+            val rotationMatrix = FloatArray(9)
+            val success = SensorManager.getRotationMatrix(rotationMatrix, null, accelerometerData, magnetometerData)
+
+            if (success) {
+                val orientationAngles = FloatArray(3)
+                SensorManager.getOrientation(rotationMatrix, orientationAngles)
+                val azimuth = Math.toDegrees(orientationAngles[0].toDouble()).toFloat()
+                rotateArrow(-azimuth)
+            }
+        }
+        override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.M) // Requires API level 23 (Marshmallow)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        navArrow = findViewById(R.id.navArrow)
 
         val btnSavedActivity = findViewById<Button>(R.id.btnSaved)
 
@@ -94,6 +142,9 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         // Stop updating location when the activity is paused
         locationManager.stopLocationUpdates()
+
+        sensorManager.unregisterListener(sensorListener)
+
     }
 
     override fun onResume(){
@@ -101,6 +152,8 @@ class MainActivity : AppCompatActivity() {
         // Start updating location when the activity is resumed
         startLocationUpdates()
 
+        sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also { accelerometer -> sensorManager.registerListener(sensorListener, accelerometer, SensorManager.SENSOR_DELAY_UI) }
+        sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)?.also { magneticField -> sensorManager.registerListener(sensorListener, magneticField, SensorManager.SENSOR_DELAY_UI) }
 
     }
 
