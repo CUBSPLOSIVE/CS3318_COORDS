@@ -1,0 +1,35 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable navarrow
+id btnLocationFive
+id btnLocationFour
+id btnLocationOne
+id btnLocationThree
+id btnLocationTwo
+id btnSaved
+id btnUpdate1
+id main
+id navArrow
+id tvCoordDisplay
+id tvCurrentCoords
+id tvGoal
+id tvGoalCoords
+id tvLatitude1
+id tvLocation1Title
+id tvLongitude1
+id tvName1
+id tvSave
+layout activity_location1
+layout activity_main
+layout activity_saved_locations
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.CoordsApp
+style Theme.CoordsApp
+xml backup_rules
+xml data_extraction_rules
