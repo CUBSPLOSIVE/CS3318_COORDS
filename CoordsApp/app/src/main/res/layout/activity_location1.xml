@@ -12,7 +12,7 @@
         android:id="@+id/tvLocation1Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Location 1"
+        android:text="Location Details:"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,6 +3,7 @@ package com.example.coordsapp
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvCurrentCoords: TextView
     private lateinit var goalCoords: TextView
     private lateinit var currentPosition: TextView
+
 
     // Registering for location permission request result
     private val locationPermissionRequest =
@@ -99,10 +101,20 @@ class MainActivity : AppCompatActivity() {
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         navArrow = findViewById(R.id.navArrow)
 
+        //begin
+        val prefs = getSharedPreferences("location_prefs", Context.MODE_PRIVATE)
+        val goalLatitude = prefs.getFloat("latitude", 0.0f)
+        val goalLongitude = prefs.getFloat("longitude", 0.0f)
+        goalCoords = findViewById(R.id.tvGoalCoords)
+        val coordsText = "Latitude: $goalLatitude\nLongitude: $goalLongitude"
+        //Log.d("MainActivity", "Received location: ${tvGoalCoords.text}")
+        goalCoords.text = coordsText // Update the UI with new coordinates
+        //end
+
         val btnSavedActivity = findViewById<Button>(R.id.btnSaved)
 
         btnSavedActivity.setOnClickListener{
-            val intent = Intent(this,savedLocationsActivity::class.java)
+            val intent = Intent(this,Location1::class.java)
             startActivity(intent)
         }
 
@@ -154,6 +166,7 @@ class MainActivity : AppCompatActivity() {
 
         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also { accelerometer -> sensorManager.registerListener(sensorListener, accelerometer, SensorManager.SENSOR_DELAY_UI) }
         sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)?.also { magneticField -> sensorManager.registerListener(sensorListener, magneticField, SensorManager.SENSOR_DELAY_UI) }
+
 
     }
 

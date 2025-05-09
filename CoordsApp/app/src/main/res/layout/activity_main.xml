@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#52663B"
-        android:text="Saved Locations"
+        android:text="Edit Goal Coordinates"
         android:textColorLink="#5C5F5C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
