@@ -34,6 +34,13 @@ import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
+import android.widget.ImageView
 
 //    import androidx.core.view.ViewCompat
 //    import androidx.core.view.WindowInsetsCompat
@@ -64,6 +71,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var currentPosition: TextView
     private lateinit var locationViewModel: LocationViewModel
 
+
+    // Sensor management
+    private lateinit var sensorManager: SensorManager // Reads 3 for 3D space (X,Y,Z)
+    private var accelerometerReading = FloatArray(3)
+    private var magnetometerReading = FloatArray(3)
+
+    private lateinit var navArrow: ImageView
+    private var currentDegree = 0f //Current rotation angle of the arrow
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var savedLocation: SavedLocation? = null
 
@@ -79,12 +95,51 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    //Rotate the arrow according to the degree passed in
+    private fun rotateArrow(degree: Float) {
+        val rotateAnimation = RotateAnimation(
+            currentDegree,
+            degree,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_SELF, 0.5f
+        )
+        rotateAnimation.duration = 210
+        rotateAnimation.fillAfter = true
+        navArrow.startAnimation(rotateAnimation)
+        currentDegree = degree
+    }
+
+    // Moves Arrow based on changes in data read by the accelerometer and the magnetometer
+    private val sensorListener = object : SensorEventListener {
+        override fun onSensorChanged(event: SensorEvent?) {
+            when (event?.sensor?.type) {
+                Sensor.TYPE_ACCELEROMETER -> accelerometerReading = event.values.clone()
+                Sensor.TYPE_MAGNETIC_FIELD -> magnetometerReading = event.values.clone()
+            }
+
+            val rotationMatrix = FloatArray(9)
+            val success = SensorManager.getRotationMatrix(rotationMatrix, null, accelerometerReading, magnetometerReading)
+
+            if (success) {
+                val orientationAngles = FloatArray(3)
+                SensorManager.getOrientation(rotationMatrix, orientationAngles)
+                val azimuth = Math.toDegrees(orientationAngles[0].toDouble()).toFloat()
+                rotateArrow(-azimuth)
+            }
+        }
+
+        override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.M) // Requires API level 23 (Marshmallow)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        navArrow = findViewById(R.id.navArrow)
 
         // Initialize TextView
         tvCurrentCoords = findViewById<TextView>(R.id.tvCurrentCoords)
@@ -162,6 +217,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     // Starts receiving location updates (every second)
     private fun startLocationUpdates() {
         locationManager.startLocationUpdates { location ->
@@ -209,6 +265,8 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
         // Stop updating location when the activity is paused
         locationManager.stopLocationUpdates()
+
+        sensorManager.unregisterListener(sensorListener)
     }
 
     override fun onResume(){
@@ -216,6 +274,8 @@ class MainActivity : AppCompatActivity() {
         // Start updating location when the activity is resumed
         startLocationUpdates()
 
+        sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also { accelerometer -> sensorManager.registerListener(sensorListener, accelerometer, SensorManager.SENSOR_DELAY_UI) }
+        sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)?.also { magneticField -> sensorManager.registerListener(sensorListener, magneticField, SensorManager.SENSOR_DELAY_UI) }
 
     }
 

@@ -60,13 +60,14 @@
 
     <ImageView
         android:id="@+id/navArrow"
-        android:layout_width="179dp"
-        android:layout_height="202dp"
+        android:layout_width="255dp"
+        android:layout_height="262dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/navarrow" />
+        app:layout_constraintVertical_bias="0.543"
+        app:srcCompat="@drawable/compass_rose_transparent" />
 
     <Button
         android:id="@+id/btnSaved"
