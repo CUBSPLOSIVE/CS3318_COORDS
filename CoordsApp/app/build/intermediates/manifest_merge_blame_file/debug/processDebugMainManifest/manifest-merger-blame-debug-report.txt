@@ -1,0 +1,210 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.coordsapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+11-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:5:5-79
+11-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:5:22-76
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:6:5-81
+12-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:6:22-78
+13
+14    <!-- Include required permissions for Google Maps API to run. -->
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:20:5-78
+15-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:20:22-76
+16    <uses-permission android:name="android.permission.INTERNET" />
+16-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:21:5-66
+16-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:21:22-64
+17
+18    <uses-feature
+18-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:22:5-24:33
+19        android:glEsVersion="0x00020000"
+19-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:23:8-40
+20        android:required="true" />
+20-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:24:8-31
+21
+22    <queries>
+22-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:27:5-30:15
+23
+24        <!-- Needs to be explicitly declared on Android R+ -->
+25        <package android:name="com.google.android.apps.maps" />
+25-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:29:7-61
+25-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:29:16-59
+26    </queries>
+27
+28    <permission
+28-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:22:5-24:47
+29        android:name="com.example.coordsapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+29-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:23:9-81
+30        android:protectionLevel="signature" />
+30-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:24:9-44
+31
+32    <uses-permission android:name="com.example.coordsapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+32-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:26:5-97
+32-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:26:22-94
+33
+34    <application
+34-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:8:5-36:19
+35        android:allowBackup="true"
+35-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:9:9-35
+36        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+36-->[androidx.core:core:1.15.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\f4ea1ce941e62aed74851584bf9c4d98\transformed\core-1.15.0\AndroidManifest.xml:28:18-86
+37        android:dataExtractionRules="@xml/data_extraction_rules"
+37-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:10:9-65
+38        android:debuggable="true"
+39        android:extractNativeLibs="true"
+40        android:fullBackupContent="@xml/backup_rules"
+40-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:11:9-54
+41        android:icon="@mipmap/ic_launcher"
+41-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:12:9-43
+42        android:label="@string/app_name"
+42-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:13:9-41
+43        android:roundIcon="@mipmap/ic_launcher_round"
+43-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:14:9-54
+44        android:supportsRtl="true"
+44-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:15:9-35
+45        android:testOnly="true"
+46        android:theme="@style/Theme.CoordsApp" >
+46-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:16:9-47
+47        <activity
+47-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:18:9-20:40
+48            android:name="com.example.coordsapp.Location1"
+48-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:19:13-38
+49            android:exported="false" />
+49-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:20:13-37
+50        <activity
+50-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:21:9-23:40
+51            android:name="com.example.coordsapp.savedLocationsActivity"
+51-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:22:13-51
+52            android:exported="false" />
+52-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:23:13-37
+53        <activity
+53-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:24:9-26:40
+54            android:name="com.example.coordsapp.LocationDetailActivity"
+54-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:25:13-51
+55            android:exported="false" />
+55-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:26:13-37
+56        <activity
+56-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:27:9-35:20
+57            android:name="com.example.coordsapp.MainActivity"
+57-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:28:13-41
+58            android:exported="true" >
+58-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:29:13-36
+59            <intent-filter>
+59-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:30:13-34:29
+60                <action android:name="android.intent.action.MAIN" />
+60-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:31:17-69
+60-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:31:25-66
+61
+62                <category android:name="android.intent.category.LAUNCHER" />
+62-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:33:17-77
+62-->C:\Users\cubsp\Desktop\CS3318_COORDS\CoordsApp\app\src\main\AndroidManifest.xml:33:27-74
+63            </intent-filter>
+64        </activity>
+65
+66        <service
+66-->[androidx.room:room-runtime:2.6.1] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\be1f7ce53e9d2e0d2b09de2197f1a9d9\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+67            android:name="androidx.room.MultiInstanceInvalidationService"
+67-->[androidx.room:room-runtime:2.6.1] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\be1f7ce53e9d2e0d2b09de2197f1a9d9\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+68            android:directBootAware="true"
+68-->[androidx.room:room-runtime:2.6.1] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\be1f7ce53e9d2e0d2b09de2197f1a9d9\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+69            android:exported="false" /> <!-- Needs to be explicitly declared on P+ -->
+69-->[androidx.room:room-runtime:2.6.1] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\be1f7ce53e9d2e0d2b09de2197f1a9d9\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+70        <uses-library
+70-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:33:7-86
+71            android:name="org.apache.http.legacy"
+71-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:33:21-58
+72            android:required="false" />
+72-->[com.google.android.gms:play-services-maps:19.2.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\2cb570ced6da498183668ce084a8056a\transformed\play-services-maps-19.2.0\AndroidManifest.xml:33:59-83
+73
+74        <activity
+74-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\1b4bd38e7c88b12d5251ce459ef9c6c3\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+75            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+75-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\1b4bd38e7c88b12d5251ce459ef9c6c3\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+76            android:exported="false"
+76-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\1b4bd38e7c88b12d5251ce459ef9c6c3\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+77            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+77-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\1b4bd38e7c88b12d5251ce459ef9c6c3\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+78
+79        <meta-data
+79-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\b70d530b991e8b55213ebbc49ceb6e60\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+80            android:name="com.google.android.gms.version"
+80-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\b70d530b991e8b55213ebbc49ceb6e60\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+81            android:value="@integer/google_play_services_version" />
+81-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\b70d530b991e8b55213ebbc49ceb6e60\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+82
+83        <provider
+83-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+84            android:name="androidx.startup.InitializationProvider"
+84-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+85            android:authorities="com.example.coordsapp.androidx-startup"
+85-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+86            android:exported="false" >
+86-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+87            <meta-data
+87-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+88                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+88-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+89                android:value="androidx.startup" />
+89-->[androidx.emoji2:emoji2:1.3.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\7682b1bdc7a11995f55b60399dcb9357\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+90            <meta-data
+90-->[androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\66f0a5c8e760ac3c9e5cf5f214d2cbb7\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+91-->[androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\66f0a5c8e760ac3c9e5cf5f214d2cbb7\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:30:17-78
+92                android:value="androidx.startup" />
+92-->[androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\66f0a5c8e760ac3c9e5cf5f214d2cbb7\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:31:17-49
+93            <meta-data
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+95                android:value="androidx.startup" />
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+96        </provider>
+97
+98        <receiver
+98-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+99            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+100            android:directBootAware="false"
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+101            android:enabled="true"
+101-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+102            android:exported="true"
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+103            android:permission="android.permission.DUMP" >
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+105                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+106            </intent-filter>
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+108                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+111                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+114                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\cubsp\.gradle\caches\8.10.2\transforms\cacf7dee982e3543fb2760202c634d1b\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+115            </intent-filter>
+116        </receiver>
+117    </application>
+118
+119</manifest>

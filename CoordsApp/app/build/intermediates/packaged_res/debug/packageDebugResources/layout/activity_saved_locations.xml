@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".savedLocationsActivity">
+
+    <TextView
+        android:id="@+id/tvSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Locations:"
+        android:textSize="34sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
+
+    <Button
+        android:id="@+id/btnLocationOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location 1"
+        android:backgroundTint="#52663B"
+        app:layout_constraintTop_toBottomOf="@id/tvSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/btnLocationTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location 2"
+        android:backgroundTint="#52663B"
+        app:layout_constraintTop_toBottomOf="@id/btnLocationOne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/btnLocationThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location 3"
+        android:backgroundTint="#52663B"
+        app:layout_constraintTop_toBottomOf="@id/btnLocationTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/btnLocationFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location 4"
+        android:backgroundTint="#52663B"
+        app:layout_constraintTop_toBottomOf="@id/btnLocationThree"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/btnLocationFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location 5"
+        android:backgroundTint="#52663B"
+        app:layout_constraintTop_toBottomOf="@id/btnLocationFour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
