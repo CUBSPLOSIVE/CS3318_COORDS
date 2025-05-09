@@ -15,6 +15,7 @@ id btnLocationTwo
 id btnSaveLocation
 id btnSaved
 id btnStartNavigation
+id btnUpdate1
 id editTextName
 id main
 id navArrow
@@ -24,9 +25,14 @@ id tvDistance
 id tvGoal
 id tvGoalCoords
 id tvLatitude
+id tvLatitude1
+id tvLocation1Title
 id tvLocationName
 id tvLongitude
+id tvLongitude1
+id tvName1
 id tvSave
+layout activity_location1
 layout activity_location_detail
 layout activity_main
 layout activity_saved_locations
