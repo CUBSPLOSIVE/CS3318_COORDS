@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -40,6 +41,7 @@ dependencies {
 
 
     implementation(libs.play.services.location)
+    implementation(libs.play.services.maps)
     val room_version = "2.6.1"
 
     val lifecycle_version = "2.8.7"

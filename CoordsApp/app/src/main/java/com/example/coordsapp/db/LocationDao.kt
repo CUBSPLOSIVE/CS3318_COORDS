@@ -22,5 +22,8 @@ interface LocationDao {
     @Query("SELECT * FROM saved_location_data_table")
     fun getAllLocations(): LiveData<List<SavedLocation>>
 
+    @Query("SELECT * FROM saved_location_data_table WHERE id = :id")
+    fun getLocationById(id: Int): LiveData<SavedLocation>
+
 }
 
